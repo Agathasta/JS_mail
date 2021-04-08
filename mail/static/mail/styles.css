@@ -1,3 +1,107 @@
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+    font-family: sans-serif;
+}
+
+input,  button, textarea {
+    font-size: 1rem;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: minmax(200px, 25%) 1fr;
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "nav footer";
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+h2 {
+    font-size: 1.25rem;
+}
+
+header {
+    grid-area: header;
+    background-color: rgba(57, 133, 90, 0.5);
+    padding: 0.5rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header-right {
+    display: flex;
+    align-items: center;
+}
+#header-right a {
+    color: slategrey;
+    margin: 0 1em;
+    text-decoration: none;
+}
+a:hover  {
+    color: black !important;
+}
+
+nav {
+    grid-area: nav;
+    background-color: rgba(57, 133, 90, 0.2);
+
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    color: slategrey;
+    background-color: transparent;
+    padding: 0.5em 1em;
+    border: none;
+    text-align: left;
+}
+button.active {
+    background-color: rgba(57, 133, 90, 0.5);
+}
+button.active, button:hover {
+    color: black;
+}
+
+main  {
+    grid-area: main;
+    padding: 0.5rem;
+}
+
+footer {
+    grid-area: footer;
+    background-color: transparent;
+    padding: 0.5rem;
+    text-align: right;
+}
+
 textarea {
     min-height: 400px;
 }
+
+@media (max-width: 700px) {
+    body {
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "footer";
+    }
+    button {
+        text-align: center;
+    }
+}
+
