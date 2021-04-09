@@ -15,6 +15,7 @@ TECHNOLOGIES USED
 
 What I learned:  
 
-* Git: to branch off a part of the work, in this case the CSS.
-* CSS: to implement the whole background layout on a grid. And make it responsive.
-* JS: to change the background of the button clicked, and reseting the background of the others.
+* Git: branch off a part of the work, in this case the CSS.
+* CSS: implement the whole background layout on a grid. And make it responsive.
+* JS: change the background of the button clicked and reset the background of the others.
+* Fetch data and do things with it
