@@ -2,39 +2,54 @@
 {% load static %}
 
 {% block body %}
-<header>
-    <h1>semaphore 2.0</h1>
-    <div id="header-right">
-        <span>{{ request.user.email }}</span>
-        <a href="{% url 'logout' %}">Log Out</a>
-    </div>
-</header>
+<div class=logged-in>
+    <header>
+        <h1>semaphore 2.0</h1>
+        <div id="header-right">
+            <span>{{ request.user.email }}</span>
+            <a href="{% url 'logout' %}">Log Out</a>
+        </div>
+    </header>
 
-<nav>
-    <button id="inbox">Inbox</button>
-    <button id="compose">Compose</button>
-    <button id="sent">Sent</button>
-    <button id="archived">Archived</button>
-</nav>
+    <nav>
+        <button class="nav-btn" id="inbox">Inbox</button>
+        <button class="nav-btn" id="compose">Compose</button>
+        <button class="nav-btn" id="sent">Sent</button>
+        <button class="nav-btn" id="archived">Archived</button>
+    </nav>
 
-<main>
-    <div id="emails-view"></div>
 
-    <div id="display-view">
-        <p>From: <span id="from"></span></p>
-        <p>To: <span id="to"></span></p>
-        <p>Subject: <span id="subject"></span></p>
-        <p>Timestamp: <span id="timestamp"></span></p>
+    <!-- There is always just one <main> visible -->
+    <main id="emails-view"></main>
+
+    <main id="display-view">
+        <div>
+            <p><span class="bold">From: </span><span id="from"></span></p>
+            <p id="timestamp"></p>
+        </div>
+        <p><span class="bold">To: </span><span id="to"></span></p>
+        <div>
+            <p><span class="bold">Subject: </span><span id="subject"></span></p>
+            <p id="mail-btns">
+                <button id="reply"><i aria-hidden="true" class="fas fa-reply" title="Reply"></i><span
+                        class="sr-only">Reply</span></button>
+                <button id="not-read"><i aria-hidden="true" class="fas fa-envelope" title="Mark as not read"></i><span
+                        class="sr-only">Mark as not read</span></button>
+                <button id="archive"><i aria-hidden="true" class="fas fa-archive" title="Archive"></i><span
+                        class="sr-only">Archive</span></button>
+            </p>
+        </div>
         <p id="body"></p>
-    </div>
+    </main>
 
-    <div id="compose-view">
-        <h3>New Email</h3>
+    <main id="compose-view">
+        <h2>New Email</h2>
         <div id="send-mail"></div>
         <form id="compose-form">
-            <!-- <div>
-                From: <input disabled value="{{ request.user.email }}">
-            </div> -->
+            <div>
+                <label for="compose-recipients">From</label>
+                <input disabled value="{{ request.user.email }}">
+            </div>
             <div>
                 <label for="compose-recipients">To</label>
                 <input id="compose-recipients">
@@ -46,12 +61,12 @@
             <textarea id="compose-body"></textarea>
             <input type="submit" value="Send Mail" />
         </form>
-    </div>
-</main>
+    </main>
 
-<footer>
-    <small>&#169;AGS</small>
-</footer>
+    <footer>
+        <small>&#169;AGS</small>
+    </footer>
+</div>
 {% endblock %}
 
 {% block script %}
